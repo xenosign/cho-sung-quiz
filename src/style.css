@@ -1,0 +1,134 @@
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f4f5f7;
+}
+
+#scoreboard {
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  gap: 16px;
+  padding: 32px 32px 0;
+  box-sizing: border-box;
+}
+
+.scoreboard-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.scoreboard-team {
+  font-size: 1rem;
+  color: #666;
+}
+
+.scoreboard-score {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4f6df5;
+}
+
+#app {
+  width: 100%;
+  max-width: 1040px;
+  padding: 32px;
+  box-sizing: border-box;
+  margin: auto 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 2.5rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.category-btn {
+  padding: 40px;
+  font-size: 1.8rem;
+  border: none;
+  border-radius: 16px;
+  background: #4f6df5;
+  color: white;
+  cursor: pointer;
+}
+
+.category-btn:hover {
+  background: #3d59d6;
+}
+
+.quiz-card {
+  background: white;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.progress {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.chosung {
+  font-size: 6rem;
+  letter-spacing: 0.3em;
+  margin: 56px 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.team-btn {
+  padding: 48px;
+  font-size: 1.8rem;
+  border: none;
+  border-radius: 16px;
+  background: #4f6df5;
+  color: white;
+  cursor: pointer;
+}
+
+.team-btn:hover {
+  background: #3d59d6;
+}
+
+.skip-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  background: white;
+  color: #666;
+  cursor: pointer;
+}
+
+.skip-btn:hover {
+  background: #f4f5f7;
+}
