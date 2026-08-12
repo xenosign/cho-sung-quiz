@@ -2,7 +2,6 @@ import './style.css'
 import { categories } from './data/words.js'
 import { getChosungString } from './chosung.js'
 
-const QUESTIONS_PER_ROUND = 10
 const TEAM_COUNT = 4
 
 const app = document.querySelector('#app')
@@ -37,7 +36,7 @@ function shuffle(array) {
 
 function startQuiz(category) {
   state.category = category
-  state.questions = shuffle(category.words).slice(0, QUESTIONS_PER_ROUND)
+  state.questions = shuffle(category.words)
   state.currentIndex = 0
   renderQuizScreen()
 }
@@ -65,14 +64,17 @@ function renderQuizScreen() {
 
   app.innerHTML = `
     <div class="quiz-card">
-      <div class="progress">${state.category.name} · ${state.currentIndex + 1} / ${QUESTIONS_PER_ROUND}</div>
+      <div class="progress">${state.category.name} · ${state.currentIndex + 1} / ${state.questions.length}</div>
       <div class="chosung">${chosung}</div>
       <div class="team-grid">
         ${teamScores
           .map((_, i) => `<button class="team-btn" data-team="${i}">${i + 1}팀</button>`)
           .join('')}
       </div>
-      <button class="skip-btn">스킵</button>
+      <div class="bottom-btn-row">
+        <button class="skip-btn">스킵</button>
+        <button class="list-btn">목록</button>
+      </div>
     </div>
   `
 
@@ -86,10 +88,11 @@ function renderQuizScreen() {
   })
 
   app.querySelector('.skip-btn').addEventListener('click', goToNext)
+  app.querySelector('.list-btn').addEventListener('click', renderCategoryScreen)
 }
 
 function goToNext() {
-  if (state.currentIndex + 1 < QUESTIONS_PER_ROUND) {
+  if (state.currentIndex + 1 < state.questions.length) {
     state.currentIndex += 1
     renderQuizScreen()
   } else {
