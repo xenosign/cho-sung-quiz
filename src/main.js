@@ -11,6 +11,7 @@ const state = {
   category: null,
   questions: [],
   currentIndex: 0,
+  showAnswer: false,
 }
 
 // 팀 점수는 라운드/카테고리를 넘나들며 누적된다.
@@ -38,6 +39,7 @@ function startQuiz(category) {
   state.category = category
   state.questions = shuffle(category.words)
   state.currentIndex = 0
+  state.showAnswer = false
   renderQuizScreen()
 }
 
@@ -66,12 +68,14 @@ function renderQuizScreen() {
     <div class="quiz-card">
       <div class="progress">${state.category.name} · ${state.currentIndex + 1} / ${state.questions.length}</div>
       <div class="chosung">${chosung}</div>
+      ${state.showAnswer ? `<div class="answer">${answer}</div>` : ''}
       <div class="team-grid">
         ${teamScores
           .map((_, i) => `<button class="team-btn" data-team="${i}">${i + 1}팀</button>`)
           .join('')}
       </div>
       <div class="bottom-btn-row">
+        <button class="answer-btn">${state.showAnswer ? '정답 숨기기' : '정답 보기'}</button>
         <button class="skip-btn">스킵</button>
         <button class="list-btn">목록</button>
       </div>
@@ -87,11 +91,16 @@ function renderQuizScreen() {
     })
   })
 
+  app.querySelector('.answer-btn').addEventListener('click', () => {
+    state.showAnswer = !state.showAnswer
+    renderQuizScreen()
+  })
   app.querySelector('.skip-btn').addEventListener('click', goToNext)
   app.querySelector('.list-btn').addEventListener('click', renderCategoryScreen)
 }
 
 function goToNext() {
+  state.showAnswer = false
   if (state.currentIndex + 1 < state.questions.length) {
     state.currentIndex += 1
     renderQuizScreen()
