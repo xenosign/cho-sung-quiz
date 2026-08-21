@@ -1,4 +1,4 @@
-export const categories = [
+export const chosungCategories = [
   {
     id: 'celebrity',
     name: '연예인',
