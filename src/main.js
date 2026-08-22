@@ -54,7 +54,7 @@ function startQuiz(category) {
 
 function renderModeScreen() {
   clearInterval(familyTimerId);
-  document.body.classList.remove('family-round-active', 'dark-mode');
+  document.body.classList.remove('family-round-active');
   state.mode = null;
   app.innerHTML = `
     <div class="mode-grid">
@@ -81,7 +81,7 @@ function renderModeScreen() {
 }
 
 function renderCategoryScreen() {
-  document.body.classList.remove('family-round-active', 'dark-mode');
+  document.body.classList.remove('family-round-active');
   app.innerHTML = `
     <h1>초성퀴즈</h1>
     <div class="category-grid">
@@ -104,7 +104,7 @@ function renderCategoryScreen() {
 }
 
 function renderQuizScreen() {
-  document.body.classList.remove('family-round-active', 'dark-mode');
+  document.body.classList.remove('family-round-active');
   const answer = state.questions[state.currentIndex];
   const chosung = getChosungString(answer);
 
@@ -186,7 +186,6 @@ function startFamilyRound(teamNumber) {
 function renderFamilyRoundSelectScreen() {
   clearInterval(familyTimerId);
   document.body.classList.remove('family-round-active');
-  document.body.classList.add('dark-mode');
   app.innerHTML = `
     <h1>가족 오락관</h1>
     <div class="round-grid">
@@ -211,7 +210,7 @@ function renderFamilyRoundSelectScreen() {
 }
 
 function renderFamilyRoundScreen() {
-  document.body.classList.add('family-round-active', 'dark-mode');
+  document.body.classList.add('family-round-active');
   const question = state.questions[state.currentIndex];
 
   app.innerHTML = `
